@@ -32,22 +32,22 @@ tax_table <- chesl_asvs[,c(694:700,694)]
 otu_table <- chesl_asvs[,c(1:693)]
 metadata <- read.csv(file = "metacomb.csv")
 
-MCC_time <- read.csv("EarlyMidLate_v2.csv")
-rich_time <- read.csv(file = "EarlyMidLate_v2.csv")
-sub_list<- read.csv(file="substrate_list2.csv", header = TRUE)
+MCC_time <- read.csv("EarlyMidLate.csv")
+rich_time <- read.csv(file = "EarlyMidLate.csv")
+sub_list<- read.csv(file="exp1_carbohydrates.csv", header = TRUE)
 
-media_summary <- read.csv(file="richnessVshannon_new2.csv", header = TRUE)
+media_summary <- read.csv(file="diversityComparisons.csv", header = TRUE)
 
 chung_chesl <- read.csv("Chung_CheSL.csv")
 Lindemann_chesl <- read.csv("Lindemann_CheSL.csv")
 Loss_simp <- read.csv(file = "Loss_Inv_Simpson.csv")
 
-node_table <- read.csv(file = "C://Users/hmccullough2/Desktop/node_list.csv", header = TRUE, row.names = FALSE)
-AP_network <- png::readPNG("C://Users/hmccullough2/Desktop/AR_Genus_best.csv.png")
-AM_network <- png::readPNG("C://Users/hmccullough2/Desktop/ARM_Genus_best.csv.png")
-B_network <- png::readPNG("C://Users/hmccullough2/Desktop/ES_Genus_best.csv.png")
-GM_network <- png::readPNG("C://Users/hmccullough2/Desktop/HG_Genus_best.csv.png")
-ILC_network <- png::readPNG("C://Users/hmccullough2/Desktop/BRM4IS_Genus_best.csv.png")
+node_table <- read.csv(file = "node_list.csv", header = TRUE, row.names = FALSE)
+AP_network <- png::readPNG("AR_Genus_best.csv.png")
+AM_network <- png::readPNG("ARM_Genus_best.csv.png")
+B_network <- png::readPNG("ES_Genus_best.csv.png")
+GM_network <- png::readPNG("HG_Genus_best.csv.png")
+ILC_network <- png::readPNG("BRM4IS_Genus_best.csv.png")
 
 # ========================================================== CheSL Calculation Function =================================================
 
@@ -428,7 +428,7 @@ fs17_brm3_Genus_bestNet[fs17_brm3_Genus_bestNet < 0] <- -1
 fs17_brm3_Genus_bestNet[fs17_brm3_Genus_bestNet > 0] <- 1
 fs17_brm3_Genus_best <- cbind(fs17_brm3_Genus_best, rowSums(fs17_brm3_Genus_bestNet)) 
 fs17_brm3_Genus_best <- fs17_brm3_Genus_best[abs(fs17_brm3_Genus_best$`rowSums(fs17_brm3_Genus_bestNet)`)> 1,]
-write.csv(fs17_brm3_Genus_best, file="C:/Users/hmccullough2/Desktop/fs17_brm3_Genus_best.csv")
+write.csv(fs17_brm3_Genus_best, file="fs17_brm3_Genus_best.csv")
 
 fs17_brm3_best <- merge(fs17_brm3AB_best_melt, genera, by.x = "Var1", by.y = "OTU", all=TRUE)
 fs17_brm3_best$Var1 <- fs17_brm3_best$Genus
@@ -448,7 +448,7 @@ fs17_brm3_best$Rep2V[fs17_brm3_best$Rep2V >0] <- 1
 fs17_brm3_best$Rep2V[fs17_brm3_best$Rep2V <0] <- -1
 fs17_brm3_best$Con <- rowSums(fs17_brm3_best[,c("Rep1V","Rep2V")])
 fs17_brm3_best <- fs17_brm3_best[fs17_brm3_best$Con != 0,]
-write.csv(fs17_brm3_best, file ="C:/Users/hmccullough2/Desktop/fs17_brm3_best.csv")
+write.csv(fs17_brm3_best, file ="fs17_brm3_best.csv")
 
 fs17_brm4A_best_melt <- melt(fs17_brm4A_best)
 fs17_brm4B_best_melt <- melt(fs17_brm4B_best)
@@ -477,7 +477,7 @@ fs17_brm4_Genus_bestNet[fs17_brm4_Genus_bestNet < 0] <- -1
 fs17_brm4_Genus_bestNet[fs17_brm4_Genus_bestNet > 0] <- 1
 fs17_brm4_Genus_best <- cbind(fs17_brm4_Genus_best, rowSums(fs17_brm4_Genus_bestNet))
 fs17_brm4_Genus_best <- fs17_brm4_Genus_best[abs(fs17_brm4_Genus_best$`rowSums(fs17_brm4_Genus_bestNet)`)> 1,]
-write.csv(fs17_brm4_Genus_best, file="C:/Users/hmccullough2/Desktop/fs17_brm4_Genus_best.csv")
+write.csv(fs17_brm4_Genus_best, file="fs17_brm4_Genus_best.csv")
 
 fs17_brm4IA_best_melt <- melt(fs17_brm4IA_best)
 fs17_brm4IB_best_melt <- melt(fs17_brm4IB_best)
@@ -506,7 +506,7 @@ fs17_brm4I_Genus_bestNet[fs17_brm4I_Genus_bestNet < 0] <- -1
 fs17_brm4I_Genus_bestNet[fs17_brm4I_Genus_bestNet > 0] <- 1
 fs17_brm4I_Genus_best <- cbind(fs17_brm4I_Genus_best, rowSums(fs17_brm4I_Genus_bestNet))
 fs17_brm4I_Genus_best <- fs17_brm4I_Genus_best[abs(fs17_brm4I_Genus_best$`rowSums(fs17_brm4I_Genus_bestNet)`)> 1,]
-write.csv(fs17_brm4I_Genus_best, file="C:/Users/hmccullough2/Desktop/fs17_brm4I_Genus_best.csv")
+write.csv(fs17_brm4I_Genus_best, file="fs17_brm4I_Genus_best.csv")
 
 
 
@@ -536,7 +536,7 @@ fs18_brm3_Genus_bestNet[fs18_brm3_Genus_bestNet < 0] <- -1
 fs18_brm3_Genus_bestNet[fs18_brm3_Genus_bestNet > 0] <- 1
 fs18_brm3_Genus_best <- cbind(fs18_brm3_Genus_best, rowSums(fs18_brm3_Genus_bestNet))
 fs18_brm3_Genus_best <- fs18_brm3_Genus_best[abs(fs18_brm3_Genus_best$`rowSums(fs18_brm3_Genus_bestNet)`)> 1,]
-write.csv(fs18_brm3_Genus_best, file="C:/Users/hmccullough2/Desktop/fs18_brm3_Genus_best.csv")
+write.csv(fs18_brm3_Genus_best, file="fs18_brm3_Genus_best.csv")
 
 fs18_brm4A_best_melt <- melt(fs18_brm4A_best)
 fs18_brm4B_best_melt <- melt(fs18_brm4B_best)
@@ -565,7 +565,7 @@ fs18_brm4_Genus_bestNet[fs18_brm4_Genus_bestNet < 0] <- -1
 fs18_brm4_Genus_bestNet[fs18_brm4_Genus_bestNet > 0] <- 1
 fs18_brm4_Genus_best <- cbind(fs18_brm4_Genus_best, rowSums(fs18_brm4_Genus_bestNet))
 fs18_brm4_Genus_best <- fs18_brm4_Genus_best[abs(fs18_brm4_Genus_best$`rowSums(fs18_brm4_Genus_bestNet)`)> 1,]
-write.csv(fs18_brm4_Genus_best, file="C:/Users/hmccullough2/Desktop/fs18_brm4_Genus_best.csv")
+write.csv(fs18_brm4_Genus_best, file="fs18_brm4_Genus_best.csv")
 
 fs18_brm4IA_best_melt <- melt(fs18_brm4IA_best)
 fs18_brm4IB_best_melt <- melt(fs18_brm4IB_best)
@@ -593,7 +593,7 @@ fs18_brm4I_Genus_bestNet[fs18_brm4I_Genus_bestNet < 0] <- -1
 fs18_brm4I_Genus_bestNet[fs18_brm4I_Genus_bestNet > 0] <- 1
 fs18_brm4I_Genus_best <- cbind(fs18_brm4I_Genus_best, rowSums(fs18_brm4I_Genus_bestNet))
 fs18_brm4I_Genus_best <- fs18_brm4I_Genus_best[abs(fs18_brm4I_Genus_best$`rowSums(fs18_brm4I_Genus_bestNet)`)> 1,]
-write.csv(fs18_brm4I_Genus_best, file="C:/Users/hmccullough2/Desktop/fs18_brm4I_Genus_best.csv")
+write.csv(fs18_brm4I_Genus_best, file="fs18_brm4I_Genus_best.csv")
 
 fs18_brm5A_best_melt <- melt(fs18_brm5A_best)
 fs18_brm5B_best_melt <- melt(fs18_brm5B_best)
@@ -622,7 +622,7 @@ fs18_brm5_Genus_bestNet[fs18_brm5_Genus_bestNet < 0] <- -1
 fs18_brm5_Genus_bestNet[fs18_brm5_Genus_bestNet > 0] <- 1
 fs18_brm5_Genus_best <- cbind(fs18_brm5_Genus_best, rowSums(fs18_brm5_Genus_bestNet))
 fs18_brm5_Genus_best <- fs18_brm5_Genus_best[abs(fs18_brm5_Genus_best$`rowSums(fs18_brm5_Genus_bestNet)`)> 1,]
-write.csv(fs18_brm5_Genus_best, file="C:/Users/hmccullough2/Desktop/fs18_brm5_Genus_best.csv")
+write.csv(fs18_brm5_Genus_best, file="fs18_brm5_Genus_best.csv")
 
 
 AR_1_best_melt <- melt(AR_1_best)
@@ -653,7 +653,7 @@ AR_Genus_bestNet[AR_Genus_bestNet < 0] <- -1
 AR_Genus_bestNet[AR_Genus_bestNet > 0] <- 1
 AR_Genus_best <- cbind(AR_Genus_best, rowSums(AR_Genus_bestNet))
 AR_Genus_best <- AR_Genus_best[abs(AR_Genus_best$`rowSums(AR_Genus_bestNet)`)> 1,]
-write.csv(AR_Genus_best, file="C:/Users/hmccullough2/Desktop/AR_Genus_best.csv")
+write.csv(AR_Genus_best, file="AR_Genus_best.csv")
 
 
 ARM_1_best_melt <- melt(ARM_1_best)
@@ -683,7 +683,7 @@ ARM_Genus_bestNet[ARM_Genus_bestNet < 0] <- -1
 ARM_Genus_bestNet[ARM_Genus_bestNet > 0] <- 1
 ARM_Genus_best <- cbind(ARM_Genus_best, rowSums(ARM_Genus_bestNet))  
 ARM_Genus_best <- ARM_Genus_best[abs(ARM_Genus_best$`rowSums(ARM_Genus_bestNet)`)> 1,]
-write.csv(ARM_Genus_best, file="C:/Users/hmccullough2/Desktop/ARM_Genus_best.csv")
+write.csv(ARM_Genus_best, file="ARM_Genus_best.csv")
 
 HS_1234_best_melt <- melt(HS_2_best)
 HS_1234_best_melt[is.na(HS_1234_best_melt)] <- 0
@@ -696,7 +696,7 @@ HS_1234_best_genus <- merge(HS_1234_best_genus, genera_nonun, by.x = "OTU2", by.
 colnames(HS_1234_best_genus) <- c("OTU1", "OTU2", "Rep1", "Genus1", "Genus2")
 HS_1234_best_genus$Var2 <- HS_1234_best_genus$Genus
 HS_1234_best_genus <- HS_1234_best_genus[,-c(1,2)]
-write.csv(HS_1234_best_genus, file="C:/Users/hmccullough2/Desktop/HS_Genus_best.csv")
+write.csv(HS_1234_best_genus, file="HS_Genus_best.csv")
 
 
 HG_1_best_melt <- melt(HG_1_best)
@@ -727,7 +727,7 @@ HG_Genus_bestNet[HG_Genus_bestNet < 0] <- -1
 HG_Genus_bestNet[HG_Genus_bestNet > 0] <- 1
 HG_Genus_best <- cbind(HG_Genus_best, rowSums(HG_Genus_bestNet))
 HG_Genus_best <- HG_Genus_best[abs(HG_Genus_best$`rowSums(HG_Genus_bestNet)`)> 1,]
-write.csv(HG_Genus_best, file="C:/Users/hmccullough2/Desktop/HG_Genus_best.csv")
+write.csv(HG_Genus_best, file="HG_Genus_best.csv")
 
 ES_1_best_melt <- melt(ES_1_best)
 ES_2_best_melt <- melt(ES_2_best)
@@ -757,7 +757,7 @@ ES_Genus_bestNet[ES_Genus_bestNet < 0] <- -1
 ES_Genus_bestNet[ES_Genus_bestNet > 0] <- 1
 ES_Genus_best <- cbind(ES_Genus_best, rowSums(ES_Genus_bestNet))
 ES_Genus_best <- ES_Genus_best[abs(ES_Genus_best$`rowSums(ES_Genus_bestNet)`)> 1,]
-write.csv(ES_Genus_best, file="C:/Users/hmccullough2/Desktop/ES_Genus_best.csv")
+write.csv(ES_Genus_best, file="ES_Genus_best.csv")
 
 
 BRM4IS_1_best_melt <- melt(BRM4IS_1_best)
@@ -788,7 +788,7 @@ BRM4IS_Genus_bestNet[BRM4IS_Genus_bestNet < 0] <- -1
 BRM4IS_Genus_bestNet[BRM4IS_Genus_bestNet > 0] <- 1
 BRM4IS_Genus_best <- cbind(BRM4IS_Genus_best, rowSums(BRM4IS_Genus_bestNet))
 BRM4IS_Genus_best <- BRM4IS_Genus_best[abs(BRM4IS_Genus_best$`rowSums(BRM4IS_Genus_bestNet)`)> 1,]
-write.csv(BRM4IS_Genus_best, file="C:/Users/hmccullough2/Desktop/BRM4IS_Genus_best.csv")
+write.csv(BRM4IS_Genus_best, file="BRM4IS_Genus_best.csv")
 
 
 #===================================== check this
@@ -881,7 +881,7 @@ mcc_plot <- ggplot(rich_time, aes(x=Time, y=MCC, fill=Time)) + geom_dotplot(aes(
 
 limitsperf <- ggarrange(rich_plot, mcc_plot, nrow=2, labels = c("A", "B"), font.label = list(size = 24))
 
-ggsave("C:/Users/hmccullough2/Desktop/Fig.S5.svg", limitsperf, "svg", width=14, height = 8, units = "in")
+ggsave("Fig.S5.svg", limitsperf, "svg", width=14, height = 8, units = "in")
 
 SR_res_aov <- aov(Shared_Richness ~ Media + Time + Media*Time,
                   data = rich_time
@@ -1213,7 +1213,7 @@ DESEQ_Media <- ggplot(All_Comp_B_log2FC_melt, aes(x= variable, y= reorder(unique
         axis.line = element_line(colour = "black"), axis.title = element_text(size=18), plot.title = element_text(size=18),
         legend.title=element_text(size=14), legend.text=element_text(size=12))
 
-ggsave("C://Users/hmccullough2/Desktop/DESEQ_5.pdf", DESEQ_plot, "pdf", width=14, height = 8, units = "in")
+ggsave("DESEQ_5.pdf", DESEQ_plot, "pdf", width=14, height = 8, units = "in")
 
 # =================================================== mccplots ==========================================================================
 
@@ -1329,7 +1329,7 @@ height <- 14
 dpi <- 600
 
 # Save the plot while maintaining relative proportions
-ggsave("C:/Users/hmccullough2/Desktop/fig5_update2.pdf", plot = final_plot, 'pdf', width = width, height = height, dpi = dpi)
+ggsave("fig5_update2.pdf", plot = final_plot, 'pdf', width = width, height = height, dpi = dpi)
 
 #plots for windows and the test non-parametrically
 #mtc between windows
@@ -1381,6 +1381,8 @@ FSBbray <- FSBbray + geom_point(size=6) + ggtitle("FSB Sample Community Composit
                                                                                                            panel.background = element_blank(), axis.line = element_line(colour = "black"), axis.title = element_text(size=18), 
                                                                                                            legend.title=element_text(size=18), legend.text=element_text(size=18), strip.text.x = element_text(size = 18))
 
+
+#Initial analysis of Carbohydrate Diversity (not CheSL)
 row.names(sub_list) <- sub_list[,1]
 sub_list<- sub_list[,-1]
 sub_list<- t(sub_list)
@@ -1523,7 +1525,7 @@ FSAfourth_row<- ggarrange(Rich_Even_FSA, Rich_Shannon_FSA, ncol = 2, labels = c(
 # Combine all three rows into the final figure
 Figure_3_FSA <- ggarrange(FSAfirst_row, FSAsecond_row, FSAthird_row, FSAfourth_row, nrow = 4)
 
-ggsave("C://Users/hmccullough2/Desktop/figure3evenFSA_new.pdf", Figure_3_FSA, "pdf", width=14, height = 14, units = "in")
+ggsave("figure3evenFSA_new.pdf", Figure_3_FSA, "pdf", width=14, height = 14, units = "in")
 
 Linkage_shannon_FSA <- ggplot(media_summary_FSA_exp2, aes(x=LS, y=Richness.Species)) + 
   ggtitle("Microbiota Richness by CheSL Shannon Index")+  xlab("CheSL Shannon Index") + ylab("Microbiota Richness")+
@@ -1731,7 +1733,7 @@ exp1fifth_row <- ggarrange(Linkage_richness_exp1, Linkage_shannon_exp1, Linkage_
 # Combine all three rows into the final figure
 Figure_S2_FSA <- ggarrange(FSAfirst_row, FSAsecond_row, FSAthird_row, FSAfourth_row, FSAfifth_row, nrow = 5)
 
-ggsave("C://Users/hmccullough2/Desktop/figureS2evenFSA_new1.svg", Figure_S2_FSA, "svg", width=14, height = 20, units = "in")
+ggsave("figureS2evenFSA_new1.svg", Figure_S2_FSA, "svg", width=14, height = 20, units = "in")
 
 #---------------------------------------------------- Just correlations FSA and FSB Experiment 1--------------------------------
 
@@ -1834,7 +1836,7 @@ exp1fifth_row <- ggarrange(Linkage_richness_exp1, Linkage_shannon_exp1, Linkage_
 # Combine all three rows into the final figure
 Figure_S2_exp1 <- ggarrange(exp1first_row, exp1second_row, exp1third_row, exp1fourth_row, exp1fifth_row, nrow = 5)
 
-ggsave("C://Users/hmccullough2/Desktop/figureS2even_new1.pdf", Figure_S2_exp1, "pdf", width=14, height = 20, units = "in")
+ggsave("figureS2even_new1.pdf", Figure_S2_exp1, "pdf", width=14, height = 20, units = "in")
 
 # -----------------------------------------------------FSB full --------------------------------------------------------------------------------
 media_comp_FSB <- data.frame( col1 = c("Media", "Concentration", "Richness", "Evenness", "Shannon Index", "Microbiota Richness"),
@@ -1960,7 +1962,7 @@ FSB_fifth_row <- ggarrange(Linkage_richness_FSB, Linkage_shannon_FSB, Linkage_ev
 # Combine all three rows into the final figure
 Figure_S1_FSB <- ggarrange(FSB_first_row, FSB_second_row, FSB_third_row, FSB_fourth_row, FSB_fifth_row, nrow = 5)
 
-ggsave("C://Users/hmccullough2/Desktop/figureS1_FSB_new.svg", Figure_S1_FSB, "svg", width=14, height = 20, units = "in")
+ggsave("figureS1_FSB_new.svg", Figure_S1_FSB, "svg", width=14, height = 20, units = "in")
 
 # _--------------------------------------------------------- FSA Experiment 1 -------------------------------------------------------
 
@@ -2060,7 +2062,7 @@ FSAexp1fifth_row <- ggarrange(Linkage_richness_FSA_exp1, Linkage_shannon_FSA_exp
 # Combine all three rows into the final figure
 Figure_S3_exp1 <- ggarrange(FSAexp1first_row, FSAexp1second_row, FSAexp1third_row, FSAexp1fourth_row, FSAexp1fifth_row, nrow = 5)
 
-ggsave("C://Users/hmccullough2/Desktop/figureS2_FSA_Exp1_11.pdf", Figure_S3_exp1, "pdf", width=14, height = 20, units = "in")
+ggsave("figureS2_FSA_Exp1_11.pdf", Figure_S3_exp1, "pdf", width=14, height = 20, units = "in")
 
 #------------------------------------------------------------- cheSL Final Plots -----------------------------------------------------------------
 
@@ -2118,7 +2120,7 @@ exp2_FSA <- ggarrange(Linkage_richness_FSA_exp2, Linkage_evenness_FSA_exp2, Link
 
 Figure_S1_12_23 <- ggarrange(all_FSB, exp1_FSA, exp2_FSA, nrow = 3)
 
-ggsave("C://Desktop/FigureS1_12_23.pdf", Figure_S1_12_23, "pdf", width=16, height = 12, units = "in")
+ggsave("FigureS1_12_23.pdf", Figure_S1_12_23, "pdf", width=16, height = 12, units = "in")
 
 #---------------------------------------------------- Figure 3 (Just correlations FSA and FSB Experiment 1) --------------------------------
 
@@ -2195,7 +2197,7 @@ all_FSAnoIL <- ggarrange(Linkage_richness_FSAnoIL,  Linkage_evenness_FSAnoIL, Li
 # Combine all three rows into the final figure
 Figure_3_12_20 <- ggarrange(exp1_bothFS, all_FSAnoIL, nrow = 2)
 
-ggsave("C://Users/hmccullough2/Desktop/Figure3_12_20.pdf", Figure_3_12_20, "pdf", width=16, height = 8, units = "in")
+ggsave("Figure3.pdf", Figure_3_12_20, "pdf", width=16, height = 8, units = "in")
 
 Linkage_richness_FSA <- ggplot(media_summary_FSA, aes(x=LR, y=Richness.Species)) + 
   xlab("CheSL Richness") + ylab("Microbiota Richness")+
@@ -2239,7 +2241,7 @@ all_FSA <- ggarrange(Linkage_richness_FSA,  Linkage_evenness_FSA, Linkage_shanno
 # Combine all three rows into the final figure
 Figure_3_12_20wIL <- ggarrange(Linkage_richness_exp1, Linkage_evenness_exp1, Linkage_shannon_exp1,Linkage_richness_FSA,  Linkage_evenness_FSA, Linkage_shannon_FSA, nrow = 3, ncol=2, labels = c("A", "B", "C", "D", "E","F"), font.label = list(size = 18))
 
-ggsave("C://Desktop/Figure3_wIL.pdf", Figure_3_12_20wIL, "pdf", width=7, height = 9, units = "in")
+ggsave("Figure3_withIL.pdf", Figure_3_12_20wIL, "pdf", width=7, height = 9, units = "in")
 
 # _--------------------------------------------------------- FSA Experiment 1 -------------------------------------------------------
 
@@ -2351,7 +2353,7 @@ all_FSB <- ggarrange(Linkage_richness_FSB,  Linkage_evenness_FSB, Linkage_shanno
 # Combine all three rows into the final figure
 Figure_S1_12_20 <- ggarrange(all_FSAs1, all_FSB, nrow = 2)
 
-ggsave("C://Desktop/FigureS1_12_20.pdf", Figure_S1_12_20, "pdf", width=16, height = 8, units = "in")
+ggsave("FigureS1.pdf", Figure_S1_12_20, "pdf", width=16, height = 8, units = "in")
 
 # -----------------------------------------------------FSB full (Supplemental Figure 1 DEF) --------------------------------------------------------------------------------
 media_comp_FSB <- data.frame( col1 = c("Media", "Concentration", "Richness", "Evenness", "Shannon Index", "Microbiota Richness"),
@@ -2477,12 +2479,12 @@ FSB_fifth_row <- ggarrange(Linkage_richness_FSB, Linkage_shannon_FSB, Linkage_ev
 # Combine all three rows into the final figure
 Figure_S1_FSB <- ggarrange(FSB_first_row, FSB_second_row, FSB_third_row, FSB_fourth_row, FSB_fifth_row, nrow = 5)
 
-ggsave("C://Users/hmccullough2/Desktop/figureS1_FSB_new.svg", Figure_S1_FSB, "svg", width=14, height = 20, units = "in")
+ggsave("figureS1_FSB.svg", Figure_S1_FSB, "svg", width=14, height = 20, units = "in")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 chesl_asvs <- cbind(data.frame(otu_table(physeq)), data.frame(tax_table(physeq)))
 
-write.csv(chesl_asvs, file = "C:/Users/hmccullough2/Desktop/chesl_asvs.csv")
+write.csv(chesl_asvs, file = "chesl_asvs.csv")
 
 #--------------------------------------------------Supplemental 2 -----------------------------------------------
 
@@ -2561,11 +2563,135 @@ chung_evenness <- ggplot(chung_chesl, aes(x=Evenness, y=Microbiota.Richness)) +
 # Combine all three rows into the final figure
 Figure_S2_12_22 <-ggarrange(lindemann_richness, lindemann_evenness, lindemann_shannon, chung_richness, chung_evenness, chung_shannon, ncol = 3, nrow = 2, labels = c("A", "B", "C", "D", "E", "F"), font.label = list(size = 24))
 
-ggsave("C://Users/hughm/Documents/FigureS2.pdf", Figure_S2_12_22, "pdf", width=16, height = 8, units = "in")
+ggsave("FigureS2.pdf", Figure_S2_12_22, "pdf", width=16, height = 8, units = "in")
 
 #----------------------------------Supplemental Figure 6-------------------------------
 
+ILC_1 <- subset_samples(ILC_1, Time >= 84)
+ILC_inv_1 <- estimate_richness(ILC_1, measures = "InvSimpson")
+ILC_mInv_1 <- mean(ILC_inv_1$InvSimpson)
 
+ILC_2 <- subset_samples(ILC_2, Time >= 84)
+ILC_inv_2 <- estimate_richness(ILC_2, measures = "InvSimpson")
+ILC_mInv_2 <- mean(ILC_inv_2$InvSimpson)
+
+ILC_3 <- subset_samples(ILC_3, Time >= 84)
+ILC_inv_3 <- estimate_richness(ILC_3, measures = "InvSimpson")
+ILC_mInv_3 <- mean(ILC_inv_3$InvSimpson)
+
+ILC_4 <- subset_samples(ILC_4, Time >= 84)
+ILC_inv_4 <- estimate_richness(ILC_4, measures = "InvSimpson")
+ILC_mInv_4 <- mean(ILC_inv_4$InvSimpson)
+
+B_1 <- subset_samples(B_1, Time >= 84)
+B_inv_1 <- estimate_richness(B_1, measures = "InvSimpson")
+B_mInv_1 <- mean(B_inv_1$InvSimpson)
+
+B_2 <- subset_samples(B_2, Time >= 84)
+B_inv_2 <- estimate_richness(B_2, measures = "InvSimpson")
+B_mInv_2 <- mean(B_inv_2$InvSimpson)
+
+B_3 <- subset_samples(B_3, Time >= 84)
+B_inv_3 <- estimate_richness(B_3, measures = "InvSimpson")
+B_mInv_3 <- mean(B_inv_3$InvSimpson)
+
+B_4 <- subset_samples(B_4, Time >= 84)
+B_inv_4 <- estimate_richness(B_4, measures = "InvSimpson")
+B_mInv_4 <- mean(B_inv_4$InvSimpson)
+
+AP_1 <- subset_samples(AP_1, Time >= 84)
+AP_inv_1 <- estimate_richness(AP_1, measures = "InvSimpson")
+AP_mInv_1 <- mean(AP_inv_1$InvSimpson)
+
+AP_2 <- subset_samples(AP_2, Time >= 84)
+AP_inv_2 <- estimate_richness(AP_2, measures = "InvSimpson")
+AP_mInv_2 <- mean(AP_inv_2$InvSimpson)
+
+AP_3 <- subset_samples(AP_3, Time >= 84)
+AP_inv_3 <- estimate_richness(AP_3, measures = "InvSimpson")
+AP_mInv_3 <- mean(AP_inv_3$InvSimpson)
+
+AP_4 <- subset_samples(AP_4, Time >= 84)
+AP_inv_4 <- estimate_richness(AP_4, measures = "InvSimpson")
+AP_mInv_4 <- mean(AP_inv_4$InvSimpson)
+
+AM_1 <- subset_samples(AM_1, Time >= 84)
+AM_inv_1 <- estimate_richness(AM_1, measures = "InvSimpson")
+AM_mInv_1 <- mean(AM_inv_1$InvSimpson)
+
+AM_2 <- subset_samples(AM_2, Time >= 84)
+AM_inv_2 <- estimate_richness(AM_2, measures = "InvSimpson")
+AM_mInv_2 <- mean(AM_inv_2$InvSimpson)
+
+AM_3 <- subset_samples(AM_3, Time >= 84)
+AM_inv_3 <- estimate_richness(AM_3, measures = "InvSimpson")
+AM_mInv_3 <- mean(AM_inv_3$InvSimpson)
+
+AM_4 <- subset_samples(AM_4, Time >= 84)
+AM_inv_4 <- estimate_richness(AM_4, measures = "InvSimpson")
+AM_mInv_4 <- mean(AM_inv_4$InvSimpson)
+
+GM_1 <- subset_samples(GM_1, Time >= 84)
+GM_inv_1 <- estimate_richness(GM_1, measures = "InvSimpson")
+GM_mInv_1 <- mean(GM_inv_1$InvSimpson)
+
+GM_2 <- subset_samples(GM_2, Time >= 84)
+GM_inv_2 <- estimate_richness(GM_2, measures = "InvSimpson")
+GM_mInv_2 <- mean(GM_inv_2$InvSimpson)
+
+GM_3 <- subset_samples(GM_3, Time >= 84)
+GM_inv_3 <- estimate_richness(GM_3, measures = "InvSimpson")
+GM_mInv_3 <- mean(GM_inv_3$InvSimpson)
+
+GM_4 <- subset_samples(GM_4, Time >= 84)
+GM_inv_4 <- estimate_richness(GM_4, measures = "InvSimpson")
+GM_mInv_4 <- mean(GM_inv_4$InvSimpson)
+
+GP_1 <- subset_samples(GP_1, Time >= 84)
+GP_inv_1 <- estimate_richness(GP_1, measures = "InvSimpson")
+GP_mInv_1 <- mean(GP_inv_1$InvSimpson)
+
+GP_2 <- subset_samples(GP_2, Time >= 84)
+GP_inv_2 <- estimate_richness(GP_2, measures = "InvSimpson")
+GP_mInv_2 <- mean(GP_inv_2$InvSimpson)
+
+GP_3 <- subset_samples(GP_3, Time >= 84)
+GP_inv_3 <- estimate_richness(GP_3, measures = "InvSimpson")
+GP_mInv_3 <- mean(GP_inv_3$InvSimpson)
+
+GP_4 <- subset_samples(GP_4, Time >= 84)
+GP_inv_4 <- estimate_richness(GP_4, measures = "InvSimpson")
+GP_mInv_4 <- mean(GP_inv_4$InvSimpson)
+
+Inverse_simpson <- c(
+  ILC_mInv_1, ILC_mInv_2, ILC_mInv_3, ILC_mInv_4, B_mInv_1, B_mInv_2, B_mInv_3, B_mInv_4,
+  AP_mInv_1, AP_mInv_2, AP_mInv_3, AP_mInv_4, AM_mInv_1, AM_mInv_2, AM_mInv_3, AM_mInv_4,
+  GP_mInv_1, GP_mInv_2, GP_mInv_3, GP_mInv_4, GM_mInv_1, GM_mInv_2, GM_mInv_3, GM_mInv_4
+)
+
+media_list <- c(
+  rep("ILC", 4), rep("B", 4), rep("AP",4), rep("AM", 4), rep("GP", 4), rep("GM",4)
+)
+
+#Values same as in Supplementary Data file
+
+cheSL_shannon <- c(
+  rep(2.52611181, 4), rep(1.636931906, 4), rep(2.123686579,4), rep(1.190280757, 4), rep(0.86473509, 4), rep(1.424182172,4)
+)
+
+cheSL_evenness <- c(
+  rep(0.857926358, 4), rep(0.638192681, 4), rep(0.827964331,4), rep(0.611683308, 4), rep(0.337135346, 4), rep(0.593930097,4)
+)
+
+cheSL_richness <- c(
+  rep(19, 4), rep(13, 4), rep(13,4), rep(7, 4), rep(13, 4), rep(11,4)
+)
+
+inverse_simpson_df <- data.frame(
+  media_list, Inverse_simpson, cheSL_shannon, cheSL_evenness, cheSL_richness
+) 
+
+colnames(inverse_simpson_df) <- c("Media", "InverseSimpson", "Shannon", "Evenness", "Richness")
 
 Loss_simp$Concentration <- as.factor(Loss_simp$Concentration)
 
@@ -2607,4 +2733,4 @@ inv_evenness <- ggplot(inverse_simpson_df, aes(x=cheSL_evenness, y=Inverse_simps
 
 Figure_S6_12_22 <-ggarrange(Loss_simp, inv_evenness, inv_shannon, ncol = 3, labels = c("A", "B", "C"), font.label = list(size = 24))
 
-ggsave("C://Users/hughm/Documents/FigureS6.pdf", Figure_S6_12_22, "pdf", width=18, height = 4, units = "in")
+ggsave("FigureS6.pdf", Figure_S6_12_22, "pdf", width=18, height = 4, units = "in")
